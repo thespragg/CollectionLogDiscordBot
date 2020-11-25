@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
 
 namespace CollectionLogBot.Helpers
@@ -18,9 +17,13 @@ namespace CollectionLogBot.Helpers
                 builder.AppendLine("!log set channel <number>");
             }
 
-            builder.AppendLine("!log add <item name>");
-            builder.AppendLine("!log <collection name>");
-            builder.AppendLine("!log <item name>");
+            builder.AppendLine("Helpers");
+            builder.AppendLine("!log collections -- Lists the collections");
+            builder.AppendLine();
+
+            builder.AppendLine("!log add <item name> -- Adds an item to the log");
+            builder.AppendLine("!log collection <collection name> -- Shows log page");
+            builder.AppendLine("!log item <item name> -- Shows drop history of the item");
 
             return builder.ToString();
         }

@@ -10,12 +10,13 @@ namespace CollectionLogBot.Helpers
 {
     public class BankHelper
     {
-        private static List<Item> _items = new List<Item>();
-        private static string baseDir = Path.Combine(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data"), "Bank");
+        private static readonly List<Item> _items = new List<Item>();
+        private static readonly string baseDir = Path.Combine(Path.Combine(AppDomain.CurrentDomain.BaseDirectory!, "Data"), "Bank");
 
         public static async Task LoadBank()
         {
-            foreach(var file in Directory.GetFiles(baseDir))
+            if (!Directory.Exists(baseDir)) CreateBank();
+            foreach (var file in Directory.GetFiles(baseDir))
             {
                 var raw = await File.ReadAllTextAsync(file);
                 var item = JsonSerializer.Deserialize<Item>(raw);
@@ -35,19 +36,16 @@ namespace CollectionLogBot.Helpers
 
         public static async Task AddItemToBank(int id, string username, DateTime dropped)
         {
-            if (!Directory.Exists(baseDir)) CreateBank();
             Item item;
             var path = Path.Combine(baseDir, $"{id}.json");
 
-            if (_items.Any(x=>x.Id == id))
-            {
-                item = _items.FirstOrDefault(x => x.Id == id);
-            }
+            if (_items.Any(x=>x.Id == id)) item = _items.FirstOrDefault(x => x.Id == id);
             else {
                 item = CollectionHandler.GetItem(id);
                 _items.Add(item);
             }
-            item.Quantity += 1;
+
+            item!.Quantity += 1;
             item.Drops.Add(new Drop(username, dropped));
             item.Obtained = true;
 

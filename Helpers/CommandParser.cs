@@ -9,9 +9,9 @@ namespace CollectionLogBot.Helpers
     {
         public static async Task ParseMessage(MessageCreateEventArgs e)
         {
-            if (!e.Message.Content.StartsWith("!log")) return;
+            if (!e.Message.Content.ToLower().StartsWith("!log")) return;
 
-            var isAdmin = e.Message.Author.Id != 140973520866770946;
+            var isAdmin = e.Message.Author.Id == 140973520866770946 || e.Message.Author.Id == 329701123000631296;
 
             //If a channel has been set then respond that the user should use that channel
             if (ConfigHelper.Config.Channel != default && e.Message.Channel.Id != ConfigHelper.Config.Channel)
@@ -20,7 +20,7 @@ namespace CollectionLogBot.Helpers
                 return;
             }
 
-            var msg = e.Message.Content.Split(" ");
+            var msg = e.Message.Content.ToLower().Split(" ");
             var res = "Your command wasn't recognized, please use '!log help' to see all commands";
 
             if (msg[1].Equals("set"))
@@ -35,7 +35,6 @@ namespace CollectionLogBot.Helpers
                         res = $"The channel has been set to {msg[3]}";
                         break;
                 }
-
             }
 
             if (msg[1] == "help") res = HelpBuilder.BuildHelp(isAdmin);
@@ -49,10 +48,19 @@ namespace CollectionLogBot.Helpers
                     res = $"Added {msg[2]} to the collection log";
                 }
                 else res = "No item with that name found";
-
             }
-
+            if (msg[1] == "collections") res = string.Join(',', CollectionHandler.CollectionNames);
             if (msg[1] == "bank") res = string.Join(',', BankHelper.GetFullBank().Select(x => x.Name));
+
+
+
+            if (msg[1] == "collection")
+            {
+                var raw = msg.ToList();
+                raw.RemoveAt(0);
+                raw.RemoveAt(0);
+                res = string.Join(',',CollectionHandler.GetCollectionItems(string.Join(' ', raw)).Select(x=>x.Quantity));
+            }
 
             await e.Message.RespondAsync(res);
         }
