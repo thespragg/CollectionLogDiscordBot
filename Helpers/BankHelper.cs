@@ -14,6 +14,10 @@ namespace CollectionLogBot.Helpers
     {
         private static readonly List<Item> _items = new List<Item>();
         private static readonly string baseDir = Path.Combine(Path.Combine(AppDomain.CurrentDomain.BaseDirectory!, "Data"), "Bank");
+        private static void CreateBank() => Directory.CreateDirectory(baseDir);
+        public static List<Item> GetFullBank() => _items;
+        public static Item GetItemFromBank(int id) => _items.FirstOrDefault(x => x.Id == id);
+        public static IEnumerable<Item> GetItemsFromBank(IEnumerable<int> ids) => _items.Where(x => ids.Contains(x.Id));
 
         public static async Task LoadBank()
         {
@@ -24,16 +28,6 @@ namespace CollectionLogBot.Helpers
                 var item = JsonSerializer.Deserialize<Item>(raw);
                 _items.Add(item);
             }
-        }
-
-        private static void CreateBank()
-        {
-            Directory.CreateDirectory(baseDir);
-        }
-
-        public static List<Item> GetFullBank()
-        {
-            return _items;
         }
 
         public static async Task AddItemToBank(int id, string username, DateTime dropped)
@@ -52,16 +46,6 @@ namespace CollectionLogBot.Helpers
             item.Obtained = true;
 
             await File.WriteAllTextAsync(path, JsonSerializer.Serialize(item));
-        }
-
-        public static Item GetItemFromBank(int id)
-        {
-            return _items.FirstOrDefault(x => x.Id == id);
-        }
-
-        public static IEnumerable<Item> GetItemsFromBank(IEnumerable<int> ids)
-        {
-            return _items.Where(x => ids.Contains(x.Id));
         }
 
         public static string GetLatestDrops(int amount = 5)
