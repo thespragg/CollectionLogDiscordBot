@@ -54,17 +54,28 @@ namespace CollectionLogBot.Helpers
                 }
                 else res = "No item with that name found";
             }
-            if (msg[1] == "collections") res = string.Join(',', CollectionHandler.CollectionNames);
+            if (msg[1] == "collections") res = string.Join(',', CollectionHandler.CollectionNames());
             if (msg[1] == "bank") res = string.Join(',', BankHelper.GetFullBank().Select(x => x.Name));
 
 
 
             if (msg[1] == "collection")
             {
+                //Refactor this, its bad
                 var raw = msg.ToList();
                 raw.RemoveAt(0);
                 raw.RemoveAt(0);
-                res = string.Join(',',CollectionHandler.GetCollectionItems(string.Join(' ', raw)).Select(x=>x.Quantity));
+                var joined = string.Join(' ', raw);
+                var collection = CollectionHandler.GetCollectionItems(joined);
+                if (collection == null)
+                {
+                    await e.Message.RespondAsync(res);
+                    return;
+                }
+                var img = CollectionLogImageBuilder.CreateImage(collection.Type, collection);
+                var channel = ConfigHelper.Config.Channel != default ? ConfigHelper.Config.Channel : e.Channel.Id;
+                await (await Program._client.GetChannelAsync(channel)).SendFileAsync(img,$"Collection log for {joined}");
+                return;
             }
 
             await e.Message.RespondAsync(res);

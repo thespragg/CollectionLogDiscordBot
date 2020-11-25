@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using CollectionLogBot.Helpers;
-using CollectionLogBot.Models;
 using DSharpPlus;
 
 namespace CollectionLogBot

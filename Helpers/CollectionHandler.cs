@@ -18,33 +18,25 @@ namespace CollectionLogBot.Helpers
             _collections = JsonSerializer.Deserialize<List<Collection>>(await File.ReadAllTextAsync(path), new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
         }
 
-        public static Item GetItem(int id)
+        public static Item GetItem(int id) => _collections.SelectMany(x => x.Items).ToList().FirstOrDefault(x => x.Id == id);
+        public static int? GetItemId(string name) => _collections.SelectMany(x => x.Items).ToList().FirstOrDefault(x => x.Name.ToLower() == name)?.Id;
+        public static List<string> CollectionNames() => _collections.Select(x => x.Name).ToList();
+        public static List<string> CollectionNamesByType(string type) => _collections.Where(x => x.Type == type).Select(x=>x.Name).ToList();
+        public static Collection GetCollectionItems(string name)
         {
-            return _collections.SelectMany(x => x.Items).ToList().FirstOrDefault(x => x.Id == id);
-        }
+            var collection = _collections.FirstOrDefault(x => x.Name.ToLower() == name);
+            if (collection == null) return null;
 
-        public static int? GetItemId(string name)
-        {
-            return _collections.SelectMany(x => x.Items).ToList().FirstOrDefault(x => x.Name.ToLower() == name)?.Id;
-        }
-
-        public static List<string> CollectionNames => _collections.Select(x => x.Name).ToList();
-
-        public static List<Item> GetCollectionItems(string name)
-        {
-            var items = _collections.FirstOrDefault(x => x.Name.ToLower() == name)?.Items;
-            if (items == null) return null;
-
-            var bank = BankHelper.GetFullBank().Where(x => items.Select(z => z.Id).Contains(x.Id)).ToList();
-            if (!bank.Any()) return items;
+            var bank = BankHelper.GetFullBank().Where(x => collection.Items.Select(z => z.Id).Contains(x.Id)).ToList();
+            if (!bank.Any()) return collection;
 
             foreach (var item in bank)
             {
-                var index = items.FindIndex(x => x.Id == item.Id);
-                items[index] = item;
+                var index = collection.Items.FindIndex(x => x.Id == item.Id);
+                collection.Items[index] = item;
             }
 
-            return items;
+            return collection;
         }
     }
 }
