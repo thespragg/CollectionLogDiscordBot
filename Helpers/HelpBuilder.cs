@@ -6,7 +6,7 @@ namespace CollectionLogBot.Helpers
 {
     public static class HelpBuilder
     {
-        public static string BuildHelp(bool isAdmin = false)
+        public static string BuildHelp(bool isAdmin)
         {
             var builder = new StringBuilder();
 
@@ -15,9 +15,13 @@ namespace CollectionLogBot.Helpers
             if (isAdmin)
             {
                 builder.AppendLine("===== Config commands =====");
-                builder.AppendLine("!set channel <number>");
+                builder.AppendLine("!log set channel <number>");
             }
-            
+
+            builder.AppendLine("!log add <item name>");
+            builder.AppendLine("!log <collection name>");
+            builder.AppendLine("!log <item name>");
+
             return builder.ToString();
         }
     }

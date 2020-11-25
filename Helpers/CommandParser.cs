@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
 using DSharpPlus.EventArgs;
 
 namespace CollectionLogBot.Helpers
@@ -7,34 +9,50 @@ namespace CollectionLogBot.Helpers
     {
         public static async Task ParseMessage(MessageCreateEventArgs e)
         {
-            if (e.Message.Content.StartsWith("!rhs")) return;
-            if (!e.Message.Content.StartsWith("!")) return;
+            if (!e.Message.Content.StartsWith("!log")) return;
+
+            var isAdmin = e.Message.Author.Id != 140973520866770946;
+
             //If a channel has been set then respond that the user should use that channel
             if (ConfigHelper.Config.Channel != default && e.Message.Channel.Id != ConfigHelper.Config.Channel)
             {
-                await e.Message.RespondAsync("Please use the correct channel");
+                await e.Message.RespondAsync($"Please use the #{(await Program._client.GetChannelAsync(ConfigHelper.Config.Channel)).Name} channel.");
                 return;
             }
 
             var msg = e.Message.Content.Split(" ");
-            var res = "Your command wasn't recognized, please use '!help' to see all commands";
+            var res = "Your command wasn't recognized, please use '!log help' to see all commands";
 
-            if (msg[0].Equals("!set"))
+            if (msg[1].Equals("set"))
             {
-                if (msg.Length != 3) return;
-                var verb = msg[1];
+                if (msg.Length != 4) return;
+                var verb = msg[2];
 
                 switch (verb)
                 {
                     case "channel":
-                        await ConfigHelper.ChangeChannel(ulong.Parse(msg[2]));
-                        res = $"The channel has been set to {msg[2]}";
+                        await ConfigHelper.ChangeChannel(ulong.Parse(msg[3]));
+                        res = $"The channel has been set to {msg[3]}";
                         break;
                 }
-                
+
             }
 
-            if (msg[0] == "!help") res = HelpBuilder.BuildHelp();
+            if (msg[1] == "help") res = HelpBuilder.BuildHelp(isAdmin);
+            if (msg[1] == "add")
+            {
+                if (msg.Length != 3) return;
+                var itemId = CollectionHandler.GetItemId(msg[2]);
+                if (itemId != null)
+                {
+                    await BankHelper.AddItemToBank((int)itemId, e.Author.Username, DateTime.Now);
+                    res = $"Added {msg[2]} to the collection log";
+                }
+                else res = "No item with that name found";
+
+            }
+
+            if (msg[1] == "bank") res = string.Join(',', BankHelper.GetFullBank().Select(x => x.Name));
 
             await e.Message.RespondAsync(res);
         }

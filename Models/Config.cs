@@ -1,4 +1,6 @@
-﻿namespace CollectionLogBot.Models
+﻿using System;
+
+namespace CollectionLogBot.Models
 {
     public class Config
     {
