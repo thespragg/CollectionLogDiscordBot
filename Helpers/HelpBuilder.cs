@@ -15,6 +15,7 @@ namespace CollectionLogBot.Helpers
             {
                 builder.AppendLine("===== Config commands =====");
                 builder.AppendLine("!log set channel <number>");
+                builder.Append("!log history");
             }
 
             builder.AppendLine("Helpers");

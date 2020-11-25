@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
+using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
@@ -60,6 +62,21 @@ namespace CollectionLogBot.Helpers
         public static IEnumerable<Item> GetItemsFromBank(IEnumerable<int> ids)
         {
             return _items.Where(x => ids.Contains(x.Id));
+        }
+
+        public static string GetLatestDrops(int amount = 5)
+        {
+            if (amount > 30) return "Please choose a smaller number to show";
+            var res =  _items.SelectMany(x => x.Drops).OrderByDescending(x => x.Dropped).Take(amount).ToList();
+            var builder = new StringBuilder();
+
+            var count = 1;
+            foreach (var x in res)
+            {
+                builder.AppendLine($"**{count}.**    *{x.Username}*    {x.Dropped}");
+            }
+
+            return builder.ToString();
         }
     }
 }

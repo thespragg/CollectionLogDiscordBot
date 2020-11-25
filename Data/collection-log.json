@@ -1,7 +1,7 @@
 [
   {
     "name": "Abyssal Sire",
-    "kill_count": 0,
+    "type": "boss",
     "items": [
       {
         "id": 13262,
@@ -61,7 +61,7 @@
   },
   {
     "name": "Alchemical Hydra",
-    "kill_count": 0,
+    "type": "boss",
     "items": [
       {
         "id": 22746,
@@ -133,7 +133,7 @@
   },
   {
     "name": "Barrows Chests",
-    "kill_count": 17,
+    "type": "boss",
     "items": [
       {
         "id": 4732,
@@ -289,7 +289,7 @@
   },
   {
     "name": "Bryophyta",
-    "kill_count": 0,
+    "type": "boss",
     "items": [
       {
         "id": 22372,
@@ -301,7 +301,7 @@
   },
   {
     "name": "Callisto",
-    "kill_count": 0,
+    "type": "boss",
     "items": [
       {
         "id": 13178,
@@ -331,7 +331,7 @@
   },
   {
     "name": "Cerberus",
-    "kill_count": 0,
+    "type": "boss",
     "items": [
       {
         "id": 13247,
@@ -379,7 +379,7 @@
   },
   {
     "name": "Chaos Elemental",
-    "kill_count": 0,
+    "type": "boss",
     "items": [
       {
         "id": 11995,
@@ -403,7 +403,7 @@
   },
   {
     "name": "Chaos Fanatic",
-    "kill_count": 0,
+    "type": "boss",
     "items": [
       {
         "id": 11995,
@@ -427,7 +427,7 @@
   },
   {
     "name": "Commander Zilyana",
-    "kill_count": 0,
+    "type": "boss",
     "items": [
       {
         "id": 12651,
@@ -481,7 +481,7 @@
   },
   {
     "name": "Corporeal Beast",
-    "kill_count": 0,
+    "type": "boss",
     "items": [
       {
         "id": 12816,
@@ -523,7 +523,7 @@
   },
   {
     "name": "Crazy Archaeologist",
-    "kill_count": 0,
+    "type": "boss",
     "items": [
       {
         "id": 11929,
@@ -547,7 +547,7 @@
   },
   {
     "name": "Dagannoth Kings",
-    "kill_count": 0,
+    "type": "boss",
     "items": [
       {
         "id": 12644,
@@ -613,7 +613,7 @@
   },
   {
     "name": "The Fight Caves",
-    "kill_count": 1,
+    "type": "boss",
     "items": [
       {
         "id": 13225,
@@ -631,7 +631,7 @@
   },
   {
     "name": "The Gauntlet",
-    "kill_count": 0,
+    "type": "boss",
     "items": [
       {
         "id": 23757,
@@ -667,7 +667,7 @@
   },
   {
     "name": "General Graardor",
-    "kill_count": 135,
+    "type": "boss",
     "items": [
       {
         "id": 12650,
@@ -721,7 +721,7 @@
   },
   {
     "name": "Giant Mole",
-    "kill_count": 1,
+    "type": "boss",
     "items": [
       {
         "id": 12646,
@@ -745,7 +745,7 @@
   },
   {
     "name": "Grotesque Guardians",
-    "kill_count": 0,
+    "type": "boss",
     "items": [
       {
         "id": 21748,
@@ -793,7 +793,7 @@
   },
   {
     "name": "Hespori",
-    "kill_count": 0,
+    "type": "boss",
     "items": [
       {
         "id": 22994,
@@ -823,7 +823,7 @@
   },
   {
     "name": "The Inferno",
-    "kill_count": 0,
+    "type": "boss",
     "items": [
       {
         "id": 21291,
@@ -841,7 +841,7 @@
   },
   {
     "name": "Kalphite Queen",
-    "kill_count": 0,
+    "type": "boss",
     "items": [
       {
         "id": 12647,
@@ -877,7 +877,7 @@
   },
   {
     "name": "King Black Dragon",
-    "kill_count": 0,
+    "type": "boss",
     "items": [
       {
         "id": 12653,
@@ -907,7 +907,7 @@
   },
   {
     "name": "Kraken",
-    "kill_count": 83,
+    "type": "boss",
     "items": [
       {
         "id": 12655,
@@ -937,7 +937,7 @@
   },
   {
     "name": "Kree'arra",
-    "kill_count": 0,
+    "type": "boss",
     "items": [
       {
         "id": 12649,
@@ -991,7 +991,7 @@
   },
   {
     "name": "K'ril Tsutsaroth",
-    "kill_count": 0,
+    "type": "boss",
     "items": [
       {
         "id": 12652,
@@ -1045,7 +1045,7 @@
   },
   {
     "name": "The Nightmare",
-    "kill_count": 0,
+    "type": "boss",
     "items": [
       {
         "id": 24491,
@@ -1111,7 +1111,7 @@
   },
   {
     "name": "Obor",
-    "kill_count": 3,
+    "type": "boss",
     "items": [
       {
         "id": 20756,
@@ -1123,7 +1123,7 @@
   },
   {
     "name": "Sarachnis",
-    "kill_count": 0,
+    "type": "boss",
     "items": [
       {
         "id": 23495,
@@ -1153,7 +1153,7 @@
   },
   {
     "name": "Scorpia",
-    "kill_count": 0,
+    "type": "boss",
     "items": [
       {
         "id": 13181,
@@ -1177,7 +1177,7 @@
   },
   {
     "name": "Skotizo",
-    "kill_count": 0,
+    "type": "boss",
     "items": [
       {
         "id": 21273,
@@ -1219,7 +1219,7 @@
   },
   {
     "name": "Thermonuclear Smoke Devil",
-    "kill_count": 0,
+    "type": "boss",
     "items": [
       {
         "id": 12648,
@@ -1249,7 +1249,7 @@
   },
   {
     "name": "Venenatis",
-    "kill_count": 0,
+    "type": "boss",
     "items": [
       {
         "id": 13177,
@@ -1279,7 +1279,7 @@
   },
   {
     "name": "Vet'ion",
-    "kill_count": 0,
+    "type": "boss",
     "items": [
       {
         "id": 13179,
@@ -1309,7 +1309,7 @@
   },
   {
     "name": "Vorkath",
-    "kill_count": 0,
+    "type": "boss",
     "items": [
       {
         "id": 21992,
@@ -1351,7 +1351,7 @@
   },
   {
     "name": "Wintertodt",
-    "kill_count": 0,
+    "type": "boss",
     "items": [
       {
         "id": 20693,
@@ -1417,7 +1417,7 @@
   },
   {
     "name": "Zalcano",
-    "kill_count": 0,
+    "type": "boss",
     "items": [
       {
         "id": 23760,
@@ -1447,7 +1447,7 @@
   },
   {
     "name": "Zulrah",
-    "kill_count": 0,
+    "type": "boss",
     "items": [
       {
         "id": 12921,
@@ -1513,7 +1513,7 @@
   },
   {
     "name": "Chambers of Xeric",
-    "kill_count": 0,
+    "type": "raid",
     "items": [
       {
         "id": 20851,
@@ -1657,7 +1657,7 @@
   },
   {
     "name": "Theatre of Blood",
-    "kill_count": 0,
+    "type": "raid",
     "items": [
       {
         "id": 22473,
@@ -1747,7 +1747,7 @@
   },
   {
     "name": "Beginner Treasure Trails",
-    "kill_count": 15,
+    "type": "clue",
     "items": [
       {
         "id": 23285,
@@ -1849,7 +1849,7 @@
   },
   {
     "name": "Easy Treasure Trails",
-    "kill_count": 3,
+    "type": "clue",
     "items": [
       {
         "id": 20211,
@@ -2641,7 +2641,7 @@
   },
   {
     "name": "Medium Treasure Trails",
-    "kill_count": 2,
+    "type": "clue",
     "items": [
       {
         "id": 2577,
@@ -3337,7 +3337,7 @@
   },
   {
     "name": "Hard Treasure Trails",
-    "kill_count": 4,
+    "type": "clue",
     "items": [
       {
         "id": 10334,
@@ -4291,7 +4291,7 @@
   },
   {
     "name": "Elite Treasure Trails",
-    "kill_count": 0,
+    "type": "clue",
     "items": [
       {
         "id": 12426,
@@ -4885,7 +4885,7 @@
   },
   {
     "name": "Master Treasure Trails",
-    "kill_count": 0,
+    "type": "clue",
     "items": [
       {
         "id": 19730,
@@ -5455,7 +5455,7 @@
   },
   {
     "name": "Shared Treasure Trail Rewards",
-    "kill_count": 24,
+    "type": "clue",
     "items": [
       {
         "id": 3827,
@@ -5755,7 +5755,7 @@
   },
   {
     "name": "Barbarian Assault",
-    "kill_count": 0,
+    "type": "minigame",
     "items": [
       {
         "id": 12703,
@@ -5827,7 +5827,7 @@
   },
   {
     "name": "Castle Wars",
-    "kill_count": null,
+    "type": "minigame",
     "items": [
       {
         "id": 4071,
@@ -6031,7 +6031,7 @@
   },
   {
     "name": "Fishing Trawler",
-    "kill_count": null,
+    "type": "minigame",
     "items": [
       {
         "id": 13258,
@@ -6061,7 +6061,7 @@
   },
   {
     "name": "Gnome Restaurant",
-    "kill_count": null,
+    "type": "minigame",
     "items": [
       {
         "id": 9469,
@@ -6091,7 +6091,7 @@
   },
   {
     "name": "Hallowed Sepulchre",
-    "kill_count": null,
+    "type": "minigame",
     "items": [
       {
         "id": 24711,
@@ -6193,7 +6193,7 @@
   },
   {
     "name": "Magic Training Arena",
-    "kill_count": null,
+    "type": "minigame",
     "items": [
       {
         "id": 6908,
@@ -6265,7 +6265,7 @@
   },
   {
     "name": "Mahogany Homes",
-    "kill_count": null,
+    "type": "minigame",
     "items": [
       {
         "id": 24884,
@@ -6319,7 +6319,7 @@
   },
   {
     "name": "Pest Control",
-    "kill_count": null,
+    "type": "minigame",
     "items": [
       {
         "id": 8841,
@@ -6385,7 +6385,7 @@
   },
   {
     "name": "Rogues' Den",
-    "kill_count": null,
+    "type": "minigame",
     "items": [
       {
         "id": 5554,
@@ -6421,7 +6421,7 @@
   },
   {
     "name": "Shades of Mort'ton",
-    "kill_count": null,
+    "type": "minigame",
     "items": [
       {
         "id": 12851,
@@ -6445,7 +6445,7 @@
   },
   {
     "name": "Temple Trekking",
-    "kill_count": null,
+    "type": "minigame",
     "items": [
       {
         "id": 10941,
@@ -6475,7 +6475,7 @@
   },
   {
     "name": "Tithe Farm",
-    "kill_count": null,
+    "type": "minigame",
     "items": [
       {
         "id": 13647,
@@ -6523,7 +6523,7 @@
   },
   {
     "name": "Trouble Brewing",
-    "kill_count": null,
+    "type": "minigame",
     "items": [
       {
         "id": 8952,
@@ -6709,7 +6709,7 @@
   },
   {
     "name": "Aerial Fishing",
-    "kill_count": null,
+    "type": "other",
     "items": [
       {
         "id": 22840,
@@ -6769,7 +6769,7 @@
   },
   {
     "name": "All Pets",
-    "kill_count": null,
+    "type": "other",
     "items": [
       {
         "id": 13262,
@@ -7051,7 +7051,7 @@
   },
   {
     "name": "Champion's Challenge",
-    "kill_count": null,
+    "type": "other",
     "items": [
       {
         "id": 6798,
@@ -7123,7 +7123,7 @@
   },
   {
     "name": "Chaos Druids",
-    "kill_count": null,
+    "type": "other",
     "items": [
       {
         "id": 20517,
@@ -7147,7 +7147,7 @@
   },
   {
     "name": "Chompy Bird Hunting",
-    "kill_count": null,
+    "type": "other",
     "items": [
       {
         "id": 13071,
@@ -7267,7 +7267,7 @@
   },
   {
     "name": "Creature Creation",
-    "kill_count": null,
+    "type": "other",
     "items": [
       {
         "id": 10859,
@@ -7315,7 +7315,7 @@
   },
   {
     "name": "Cyclopes",
-    "kill_count": null,
+    "type": "other",
     "items": [
       {
         "id": 8844,
@@ -7369,7 +7369,7 @@
   },
   {
     "name": "Fossil Island Notes",
-    "kill_count": null,
+    "type": "other",
     "items": [
       {
         "id": 21664,
@@ -7435,7 +7435,7 @@
   },
   {
     "name": "Glough's Experiments",
-    "kill_count": 1,
+    "type": "other",
     "items": [
       {
         "id": 19529,
@@ -7477,7 +7477,7 @@
   },
   {
     "name": "Monkey Backpacks",
-    "kill_count": null,
+    "type": "other",
     "items": [
       {
         "id": 24862,
@@ -7519,7 +7519,7 @@
   },
   {
     "name": "Motherlode Mine",
-    "kill_count": null,
+    "type": "other",
     "items": [
       {
         "id": 12019,
@@ -7561,7 +7561,7 @@
   },
   {
     "name": "My Notes",
-    "kill_count": null,
+    "type": "other",
     "items": [
       {
         "id": 11341,
@@ -7723,7 +7723,7 @@
   },
   {
     "name": "Random Events",
-    "kill_count": null,
+    "type": "other",
     "items": [
       {
         "id": 6654,
@@ -7867,7 +7867,7 @@
   },
   {
     "name": "Revenants",
-    "kill_count": 0,
+    "type": "other",
     "items": [
       {
         "id": 22542,
@@ -7957,7 +7957,7 @@
   },
   {
     "name": "Rooftop Agility",
-    "kill_count": null,
+    "type": "other",
     "items": [
       {
         "id": 11850,
@@ -7999,7 +7999,7 @@
   },
   {
     "name": "Shayzien Armour",
-    "kill_count": null,
+    "type": "other",
     "items": [
       {
         "id": 13357,
@@ -8155,7 +8155,7 @@
   },
   {
     "name": "Skilling Pets",
-    "kill_count": null,
+    "type": "other",
     "items": [
       {
         "id": 13320,
@@ -8209,7 +8209,7 @@
   },
   {
     "name": "Slayer",
-    "kill_count": null,
+    "type": "other",
     "items": [
       {
         "id": 7975,
@@ -8623,7 +8623,7 @@
   },
   {
     "name": "TzHaar",
-    "kill_count": null,
+    "type": "other",
     "items": [
       {
         "id": 6568,
@@ -8689,7 +8689,7 @@
   },
   {
     "name": "Miscellaneous",
-    "kill_count": null,
+    "type": "other",
     "items": [
       {
         "id": 21509,

@@ -23,7 +23,7 @@ namespace CollectionLogBot.Helpers
             var msg = e.Message.Content.ToLower().Split(" ");
             var res = "Your command wasn't recognized, please use '!log help' to see all commands";
 
-            if (msg[1].Equals("set"))
+            if (msg[1].Equals("set") && isAdmin)
             {
                 if (msg.Length != 4) return;
                 var verb = msg[2];
@@ -35,6 +35,11 @@ namespace CollectionLogBot.Helpers
                         res = $"The channel has been set to {msg[3]}";
                         break;
                 }
+            }
+
+            if (msg[1] == "history" && isAdmin)
+            {
+                res = msg.Length == 3 ? BankHelper.GetLatestDrops(int.Parse(msg[2])) : BankHelper.GetLatestDrops();
             }
 
             if (msg[1] == "help") res = HelpBuilder.BuildHelp(isAdmin);
