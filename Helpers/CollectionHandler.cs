@@ -21,10 +21,28 @@ namespace CollectionLogBot.Helpers
         public static Item GetItem(int id) => _collections.SelectMany(x => x.Items).ToList().FirstOrDefault(x => x.Id == id);
         public static int? GetItemId(string name) => _collections.SelectMany(x => x.Items).ToList().FirstOrDefault(x => x.Name.ToLower() == name)?.Id;
         public static List<string> CollectionNames() => _collections.Select(x => x.Name).ToList();
-        public static List<string> CollectionNamesByType(string type) => _collections.Where(x => x.Type == type).Select(x=>x.Name).ToList();
+        public static List<string> CollectionNamesByType(string type) => _collections.Where(x => x.Type == type).Select(x => x.Name).ToList();
+
+        public static List<KeyValuePair<string, bool>> CollectionNamesByTypeWithCompletedBool(string type)
+        {
+            var collections = _collections.Where(x => x.Type == type).Select(x=>x.Name).ToList();
+
+            var res = new List<KeyValuePair<string, bool>>();
+
+            foreach (var collection in collections)
+            {
+                var items = GetCollectionItems(collection).Items.Select(x=>x.Id);
+                var isCompleted = BankHelper.GetFullBank().Distinct().Count(x => items.Contains(x.Id)) == items.Count();
+                res.Add(new KeyValuePair<string, bool>(collection, isCompleted));
+            }
+
+            return res;
+        }
+
+        public static List<string> GetTypes() => _collections.Select(x => x.Type).Distinct().ToList();
         public static Collection GetCollectionItems(string name)
         {
-            var collection = _collections.FirstOrDefault(x => x.Name.ToLower() == name);
+            var collection = _collections.FirstOrDefault(x => string.Equals(x.Name, name, StringComparison.CurrentCultureIgnoreCase));
             if (collection == null) return null;
 
             var bank = BankHelper.GetFullBank().Where(x => collection.Items.Select(z => z.Id).Contains(x.Id)).ToList();
