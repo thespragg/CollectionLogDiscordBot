@@ -1,6 +1,8 @@
 ﻿using System.Threading.Tasks;
 using CollectionLogBot.Helpers;
 using DSharpPlus;
+using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Hosting;
 
 namespace CollectionLogBot
 {
@@ -12,10 +14,14 @@ namespace CollectionLogBot
         {
             await CollectionHandler.LoadFromFile();
             await BankHelper.LoadBank();
-
-            _client = await DiscordHelper.ConnectToClient(CommandParser.ParseMessage);
-
-            await Task.Delay(-1);
+            CreateHostBuilder(args).Build().Run();
         }
+
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                });
     }
 }
