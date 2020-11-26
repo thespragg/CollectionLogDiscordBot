@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Dynamic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using DSharpPlus.EventArgs;
 
@@ -45,19 +47,72 @@ namespace CollectionLogBot.Helpers
             if (msg[1] == "help") res = HelpBuilder.BuildHelp(isAdmin);
             if (msg[1] == "add")
             {
-                if (msg.Length != 3) return;
-                var itemId = CollectionHandler.GetItemId(msg[2]);
+                if (msg.Length < 3) return;
+                var raw = msg.ToList();
+                raw.RemoveAt(0);
+                raw.RemoveAt(0);
+                var joined = string.Join(' ', raw);
+                var itemId = CollectionHandler.GetItemId(joined);
                 if (itemId != null)
                 {
                     await BankHelper.AddItemToBank((int)itemId, e.Author.Username, DateTime.Now);
-                    res = $"Added {msg[2]} to the collection log";
+                    res = $"Added {joined} to the collection log";
                 }
                 else res = "No item with that name found";
             }
             if (msg[1] == "collections") res = string.Join(',', CollectionHandler.CollectionNames());
-            if (msg[1] == "bank") res = string.Join(',', BankHelper.GetFullBank().Select(x => x.Name));
+            if (msg[1] == "bank")
+            {
+                var bankImage = await BankImageBuilder.CreateBankImage();
+                var channel = ConfigHelper.Config.Channel != default ? ConfigHelper.Config.Channel : e.Channel.Id;
+                await (await Program._client.GetChannelAsync(channel)).SendFileAsync(bankImage);
+                return;
+            }
 
+            if (msg[1] == "item")
+            {
+                var raw = msg.ToList();
+                raw.RemoveAt(0);
+                raw.RemoveAt(0);
+                var joined = string.Join(' ', raw);
+                var drops = BankHelper.GetItemFromBank(joined)?.Drops;
+                if (drops.Count != 0)
+                {
+                    var builder = new StringBuilder();
 
+                    var count = 1;
+                    foreach (var drop in drops)
+                    {
+                        builder.AppendLine(
+                            $"**{count}** {drop.Username} *{drop.Dropped.ToString("dd/MM/yy hh:mm tt")}*");
+                    }
+
+                    res = builder.ToString();
+                }
+                else
+                {
+                    res = "No drops recorded for that item";
+                }
+            }
+
+            if (msg[1] == "remove")
+            {
+                var raw = msg.ToList();
+                raw.RemoveAt(0);
+                raw.RemoveAt(0);
+                if (raw.Count >= 2)
+                {
+                    var joined = string.Join(' ',raw.GetRange(0, raw.Count - 1));
+                    var drop = raw[raw.Count - 1];
+
+                    var success = int.TryParse(drop, out var dropInt);
+                    if (success)
+                    {
+                        BankHelper.RemoveItemFromBank(joined, dropInt);
+                        res = $"Removed item {joined}";
+                    }
+                }
+            }
 
             if (msg[1] == "collection")
             {
@@ -74,7 +129,7 @@ namespace CollectionLogBot.Helpers
                 }
                 var img = CollectionLogImageBuilder.CreateImage(collection.Type, collection);
                 var channel = ConfigHelper.Config.Channel != default ? ConfigHelper.Config.Channel : e.Channel.Id;
-                await (await Program._client.GetChannelAsync(channel)).SendFileAsync(img,$"Collection log for {joined}");
+                await (await Program._client.GetChannelAsync(channel)).SendFileAsync(img);
                 return;
             }
 
