@@ -19,12 +19,14 @@ namespace CollectionLogBot.Helpers
             }
 
             builder.AppendLine("Helpers");
+            builder.AppendLine("!log bank");
             builder.AppendLine("!log collections -- Lists the collections");
             builder.AppendLine();
 
             builder.AppendLine("!log add <item name> -- Adds an item to the log");
             builder.AppendLine("!log collection <collection name> -- Shows log page");
             builder.AppendLine("!log item <item name> -- Shows drop history of the item");
+            builder.AppendLine("!log remove <item name> <drop number> -- Removes the specified drop from the item");
 
             return builder.ToString();
         }
