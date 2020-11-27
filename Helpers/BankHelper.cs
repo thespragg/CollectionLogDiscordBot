@@ -20,6 +20,7 @@ namespace CollectionLogBot.Helpers
         public static IEnumerable<Item> GetItemsFromBank(IEnumerable<int> ids) => _items.Where(x => ids.Contains(x.Id));
         private static readonly HttpClient ItemPriceClient = new HttpClient();
 
+        public static List<GameDrop> Drops = new List<GameDrop>();
         public static async Task LoadBank()
         {
             if (!Directory.Exists(baseDir)) CreateBank();
@@ -42,7 +43,12 @@ namespace CollectionLogBot.Helpers
             await File.WriteAllTextAsync(path, JsonSerializer.Serialize(item));
         }
 
-        public static async Task AddItemToBank(int id, string username, DateTime dropped)
+        public static async Task<bool> AddItemToBank(GameDrop drop)
+        {
+            return await AddItemToBank(drop.ItemId, drop.Username, DateTime.Now, drop.ItemQuantity);
+        }
+
+        public static async Task<bool> AddItemToBank(int id, string username, DateTime dropped, int qty)
         {
             Item item;
             var path = Path.Combine(baseDir, $"{id}.json");
@@ -51,14 +57,16 @@ namespace CollectionLogBot.Helpers
             else
             {
                 item = CollectionHandler.GetItem(id);
+                if (item == null) return false;
                 _items.Add(item);
             }
 
-            item!.Quantity += 1;
+            item!.Quantity += qty;
             item.Drops.Add(new Drop(username, dropped));
             item.Obtained = true;
 
             await File.WriteAllTextAsync(path, JsonSerializer.Serialize(item));
+            return true;
         }
 
         public static string GetLatestDrops(int amount = 5)

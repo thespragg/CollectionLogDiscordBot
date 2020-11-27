@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +23,8 @@ namespace CollectionLogBot.Helpers
 
             var msg = e.Message.Content.ToLower().Split(" ");
             var res = "Your command wasn't recognized, please use '!log help' to see all commands";
+
+            if (msg[1].Equals("start")) res = HelpBuilder.BuildGettingStarted();
 
             if (msg[1].Equals("set") && isAdmin)
             {
@@ -55,7 +56,7 @@ namespace CollectionLogBot.Helpers
                 var itemId = CollectionHandler.GetItemId(joined);
                 if (itemId != null)
                 {
-                    await BankHelper.AddItemToBank((int)itemId, e.Author.Username, DateTime.Now);
+                    await BankHelper.AddItemToBank((int)itemId, e.Author.Username, DateTime.Now,1);
                     res = $"Added {joined} to the collection log";
                 }
                 else res = "No item with that name found";

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using CollectionLogBot.Helpers;
+using CollectionLogBot.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CollectionLogBot.Controllers
@@ -10,11 +12,10 @@ namespace CollectionLogBot.Controllers
     [ApiController]
     public class DropsController : ControllerBase
     {
-        [HttpPost("add/{username}/{dropId}")]
-        public async Task<string> AddDrop(string username, int dropId)
+        [HttpPost("add")]
+        public void AddDrop(GameDrop drop)
         {
-            await BankHelper.AddItemToBank(dropId, username, DateTime.Now);
-            return "Added";
+            BankHelper.Drops.Add(drop);
         }
 
         [HttpGet("")]
